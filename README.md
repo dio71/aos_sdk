@@ -144,3 +144,22 @@ S2OfferwallView offerwallView = createOfferwallView();
 offerwallView.load("placementName");
 
 ```
+
+# 개인 정보 수집 동의
+오퍼월 최초 사용시 개인 정보 수집 동의 다이알로그가 뜨고 여기에서 동의를 해야만 오퍼월로 진입하게 된다. 
+S2Offerwall.startActivity() 를 호출하는 경우 내부에서 이에 대한 처리를 진행하지만 만약 S2OfferwallView 를 사용하여 직접 오퍼월 View 를 띄우는 경우에는
+개인 정보 수집 동의 다이알로그를 띄우도록 구현을 해야한다. 아래의 구현 예시를 참고하여 구현한다.
+
+```java
+
+S2Offerwall.showConsentDialog(MyActivity.this, () -> {
+    // 오퍼월 view 를 띄운다.
+});
+
+```
+
+만약 자체적으로 오퍼월 관련 개인 정보 수집동의를 받는 경우에는 SDK가 제공하는 동의 창을 비활성화해야한다. 아래의 API 를 사용하여 동의 창 기능을 on/off 할 수 있다.
+
+- S2Offerwall.setConsentDialogRequired(Context context, boolean required)
+
+
